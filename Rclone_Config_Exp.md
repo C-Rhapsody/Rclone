@@ -203,13 +203,13 @@ n) No
 y/n> n
 ```
 
-모든 구성 확인! 여지껏 잘 따라왔다면 뒤도 돌아보지 말고 'y'를 눌러 저장한다.
+모든 구성 확인! 여기까지 잘 따라왔다면 뒤도 돌아보지 말고 'y'를 눌러 저장한다.
 ```
 --------------------
 [GoogleDrive]
 type = drive
 scope = drive.readonly
-token = {"access_token":"ya29.GltgBneQvk67YxI104GJALSp5AWMmJAfoHpDZgpmcl2MwaTmVz7VNA7ci_GJhX7y2QAUIffTvu8uZ1Ej4545xOpwsM4Krmej6SdXX-HdnCIEZMpGOvqLKnZ6a6pG","token_type":"Bearer","refresh_token":"1/RKbZ5xreFlWv-X2r8Z_VWX0oHAxQgE4Wwh48HeF8lOVo-gZi7VjrhDZ0jXwYxRma","expiry":"2018-11-26T07:41:46.733664353Z"}
+token = {"access_token":"<블라블라>","token_type":"Bearer","refresh_token":"<블라블라>","expiry":"<갱신종료 정보>"}
 --------------------
 y) Yes this is OK
 e) Edit this remote
