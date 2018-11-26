@@ -139,7 +139,7 @@ scope> 2
 
   - 모든 디렉토리를 포함할 거라면 그냥 엔터
   - 특정 디렉토리만 포함하여 root로 사용하고 싶다면 웹으로 구글드라이브에 접속한 다음에, 사용하고 싶은 특정 디렉토리에 접속하면 상단의 URL이 변경된다.
-    - 이 때 'https://drive.google.com/drive/u/0/folders/\<Token\>'형태로 변경되는데 이 중 Token만 복사하여 붙여넣기
+    - 이 때 'https://drive.google.com/drive/u/0/folders/ \<Token\>'형태로 변경되는데 이 중 Token만 복사하여 붙여넣기
 ```
 ID of the root folder
 Leave blank normally.
