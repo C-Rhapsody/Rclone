@@ -99,7 +99,7 @@ Storage> 12
 ```
 
 구글드라이브에 접근할 때 사용할 Client_id와 Secret_Key를 입력한다.
-  - plexdriver는 여기서 Google Developer 사이트에서 프로젝트 생성해 주고 이 키를 어딘가에 저장해야 하는데, rclone은 그럴 필요가 없이 저절로 갱신해 준다. **그냥 엔터를 눌러 넘어가기를 추천!!!!**
+  - plexdrive는 여기서 Google Developer 사이트에서 프로젝트 생성해 주고 이 키를 어딘가에 저장해야 하는데, rclone은 그럴 필요가 없이 저절로 갱신해 준다. **그냥 엔터를 눌러 넘어가기를 추천!!!!**
 
 ```
 ** See help for drive backend at: https://rclone.org/drive/ **
