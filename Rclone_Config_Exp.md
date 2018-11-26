@@ -137,7 +137,9 @@ scope> 2
 
 구글드라이브 내용중에 필요로 하는 폴더의 Token(?)키 값을 지정해 준다. 
 
-모든 디렉토리를 포함할 거라면 그냥 엔터
+  - 모든 디렉토리를 포함할 거라면 그냥 엔터
+  - 특정 디렉토리만 포함하여 root로 사용하고 싶다면 웹으로 구글드라이브에 접속한 다음에, 사용하고 싶은 특정 디렉토리에 접속하면 상단의 URL이 변경된다.
+    - 이 때 'https://drive.google.com/drive/u/0/folders/<Token>'형태로 변경되는데 이 중 Token만 복사하여 붙여넣기
 ```
 ID of the root folder
 Leave blank normally.
@@ -161,4 +163,74 @@ Edit advanced config? (y/n)
 y) Yes
 n) No
 y/n> n
+```
+
+이후 Rclone을 사용할 시스템이 ssh를 통하지 않고 직접 키보드/마우스를 입력하여 모니터로 화면을 보고 있다면 'y'를 입력, 
+
+(이러면 기본브라우저로 바로 링크가 열린다)
+
+ssh나 telnet을 통해서 구성중이라면(Headless) 'n'을 입력한다.
+
+예시에서는 'n'
+```
+Remote config
+Use auto config?
+ * Say Y if not sure
+ * Say N if you are working on a remote or headless machine or Y didn't work
+y) Yes
+n) No
+y/n> n
+```
+
+'n'을 통해서 remote config로 Oauth URL을 알려준다. 이 링크를 복사하여 브라우저를 통해서 접속
+```
+If your browser doesn't open automatically go to the following link: https://accounts.google.com/o/oauth2/auth?access_type=offline&client_id=<블라블라>.apps.googleusercontent.com&redirect_uri=urn%<블라블라>
+Log in and authorize rclone for access
+```
+
+이후 자신의 Google 계정으로 접근하여, 접근을 허용해 주면 Oauth Secret Token을 얻을 수 있다. 이 토큰을 복사한 뒤 붙여 넣어 준다.x
+```
+Enter verification code> <복사한 Token>
+```
+
+팀드라이브 연결할 것인가 묻는다. 이는 따로 가입한 팀드라이브가 없어서 테스트해보지 못한다.
+
+예시에서는 'n'을 입력하여 Pass
+```
+Configure this as a team drive?
+y) Yes
+n) No
+y/n> n
+```
+
+모든 구성 확인! 여지껏 잘 따라왔다면 뒤도 돌아보지 말고 'y'를 눌러 저장한다.
+```
+--------------------
+[GoogleDrive]
+type = drive
+scope = drive.readonly
+token = {"access_token":"ya29.GltgBneQvk67YxI104GJALSp5AWMmJAfoHpDZgpmcl2MwaTmVz7VNA7ci_GJhX7y2QAUIffTvu8uZ1Ej4545xOpwsM4Krmej6SdXX-HdnCIEZMpGOvqLKnZ6a6pG","token_type":"Bearer","refresh_token":"1/RKbZ5xreFlWv-X2r8Z_VWX0oHAxQgE4Wwh48HeF8lOVo-gZi7VjrhDZ0jXwYxRma","expiry":"2018-11-26T07:41:46.733664353Z"}
+--------------------
+y) Yes this is OK
+e) Edit this remote
+d) Delete this remote
+y/e/d> y
+```
+
+이후 만들어진 Config Name을 잘 기억하도록 하자!!!
+```
+Current remotes:
+
+Name                 Type
+====                 ====
+GoogleDrive          drive
+
+e) Edit existing remote
+n) New remote
+d) Delete remote
+r) Rename remote
+c) Copy remote
+s) Set configuration password
+q) Quit config
+e/n/d/r/c/s/q>
 ```
