@@ -234,3 +234,261 @@ s) Set configuration password
 q) Quit config
 e/n/d/r/c/s/q>
 ```
+
+###### **2. Cache 설정**
+
+1번과 동일하게 rclone config 화면으로 이동한다.
+
+(1번항 완료 후 바로 실행하면 PASS)
+```
+~$ rclone config
+Current remotes:
+
+Name                 Type
+====                 ====
+GoogleDrive          drive
+
+e) Edit existing remote
+n) New remote
+d) Delete remote
+r) Rename remote
+c) Copy remote
+s) Set configuration password
+q) Quit config
+e/n/d/r/c/s/q>
+```
+
+'n'을 입력하여 새로운 Config Name을 지정해 준다.
+
+예시에서는 'cache'
+```
+e/n/d/r/c/s/q> n
+name> cache
+```
+
+이제 Type을 결정하는데, 이 때 '7번. Cache a remote'를 입력하여 준다.
+```
+Type of storage to configure.
+Enter a string value. Press Enter for the default ("").
+Choose a number from below, or type in your own value
+ 1 / A stackable unification remote, which can appear to merge the contents of several remotes
+   \ "union"
+ 2 / Alias for a existing remote
+   \ "alias"
+ 3 / Amazon Drive
+   \ "amazon cloud drive"
+ 4 / Amazon S3 Compliant Storage Providers (AWS, Ceph, Dreamhost, IBM COS, Minio)
+   \ "s3"
+ 5 / Backblaze B2
+   \ "b2"
+ 6 / Box
+   \ "box"
+ 7 / Cache a remote
+   \ "cache"
+ 8 / Dropbox
+   \ "dropbox"
+ 9 / Encrypt/Decrypt a remote
+   \ "crypt"
+10 / FTP Connection
+   \ "ftp"
+11 / Google Cloud Storage (this is not Google Drive)
+   \ "google cloud storage"
+12 / Google Drive
+   \ "drive"
+13 / Hubic
+   \ "hubic"
+14 / JottaCloud
+   \ "jottacloud"
+15 / Local Disk
+   \ "local"
+16 / Mega
+   \ "mega"
+17 / Microsoft Azure Blob Storage
+   \ "azureblob"
+18 / Microsoft OneDrive
+   \ "onedrive"
+19 / OpenDrive
+   \ "opendrive"
+20 / Openstack Swift (Rackspace Cloud Files, Memset Memstore, OVH)
+   \ "swift"
+21 / Pcloud
+   \ "pcloud"
+22 / QingCloud Object Storage
+   \ "qingstor"
+23 / SSH/SFTP Connection
+   \ "sftp"
+24 / Webdav
+   \ "webdav"
+25 / Yandex Disk
+   \ "yandex"
+26 / http Connection
+   \ "http"
+Storage> 7
+```
+
+이후 caching 할 rclone config name과 디렉토리를 결정해 준다.
+
+예시에서는 'GoogleDrive:' <- 뒤에 ':' 꼭 입력!
+```
+** See help for cache backend at: https://rclone.org/cache/ **
+
+Remote to cache.
+Normally should contain a ':' and a path, eg "myremote:path/to/dir",
+"myremote:bucket" or maybe "myremote:" (not recommended).
+Enter a string value. Press Enter for the default ("").
+remote> GoogleDrive:
+```
+
+plexmediaserver를 위한 cache 기능이므로, plex에 관련된 정보를 입력한다.(같은 컴퓨터에서만 동작할 것이다.)
+
+만약 plexmediaserver가 설치되어 있지 않다면 대충 엔터 (나중에 설정을 변경할 수 있음)
+
+예시에서는 'http://127.0.0.1:32400'
+```
+The URL of the Plex server
+Enter a string value. Press Enter for the default ("").
+plex_url> http://127.0.0.1:32400
+```
+
+plex id를 입력한다.(이메일 계정으로는 시도해 보지 못하였다)
+```
+The username of the Plex user
+Enter a string value. Press Enter for the default ("").
+plex_username> Cat'sRhapsody
+```
+
+plex 비밀번호를 설정한다. 비번은 크게 관련이 없는것인지 패스워드를 임의로 결정하는 메뉴가 있는데, 테스트는 따로 하지 않았다.
+
+예시에서는 실제 비밀번호를 입력할 것임으로 'y'입력
+```
+The password of the Plex user
+y) Yes type in my own password
+g) Generate random password
+n) No leave this optional password blank
+y/g/n> y
+```
+
+비밀번호를 입력한다.
+```
+Enter the password:
+Confirm the password:
+```
+
+cache에 사용될 chunk 사이지를 결정한다. (직접 입력 가능)
+
+예시에서는 기본값인 '5M'선택
+
+```
+The size of a chunk (partial file data).
+
+Use lower numbers for slower connections. If the chunk size is
+changed, any downloaded chunks will be invalid and cache-chunk-path
+will need to be cleared or unexpected EOF errors will occur.
+Enter a size with suffix k,M,G,T. Press Enter for the default ("5M").
+Choose a number from below, or type in your own value
+ 1 / 1MB
+   \ "1m"
+ 2 / 5 MB
+   \ "5M"
+ 3 / 10 MB
+   \ "10M"
+chunk_size> 2
+```
+
+cache chunk가 유지될 시간을 정해준다.
+
+예시에서는 기본값인 '6h'를 직접 입력
+```
+How long to cache file structure information (directory listings, file size, times etc).
+If all write operations are done through the cache then you can safely make
+this value very large as the cache store will also be updated in real time.
+Enter a duration s,m,h,d,w,M,y. Press Enter for the default ("6h0m0s").
+Choose a number from below, or type in your own value
+ 1 / 1 hour
+   \ "1h"
+ 2 / 24 hours
+   \ "24h"
+ 3 / 48 hours
+   \ "48h"
+info_age> 6h
+```
+
+Chunk의 Total Size를 입력한다.
+
+예시에서는 기본값인 '10G'를 선택
+```
+If the cache exceeds this value then it will start to delete the
+oldest chunks until it goes under this value.
+Enter a size with suffix k,M,G,T. Press Enter for the default ("10G").
+Choose a number from below, or type in your own value
+ 1 / 500 MB
+   \ "500M"
+ 2 / 1 GB
+   \ "1G"
+ 3 / 10 GB
+   \ "10G"
+chunk_total_size> 3
+```
+
+고급설정 메뉴 입력 유무를 입력한다.
+
+예시에서는 'n'을 입력하여 모두 기본값으로 설정('/home/<username>/.config/rclone', etc....)
+
+```
+Edit advanced config? (y/n)
+y) Yes
+n) No
+y/n> n
+```
+ 
+최종 설정 확인, 위 절차를 모두 잘 따라왔다면 크게 무리 없을 것임으로 'y'를 입력하여 설정을 마친다.
+```
+Remote config
+--------------------
+[cache]
+type = cache
+remote = GoogleDrive:
+plex_password = *** ENCRYPTED ***
+chunk_size = 5M
+info_age = 6h0m0s
+chunk_total_size = 10G
+--------------------
+y) Yes this is OK
+e) Edit this remote
+d) Delete this remote
+y/e/d> y
+```
+
+예시대로 한다면 최종적으로는 아래와 같이 설정되있어야 한다. (기존 Config Name제외)
+
+모두 설정이 잘 되어 있다면 'q'를 입력하여 rclone config를 종료한다.
+
+```
+Current remotes:
+
+Name                 Type
+====                 ====
+GoogleDrive          drive
+cache                cache
+
+e) Edit existing remote
+n) New remote
+d) Delete remote
+r) Rename remote
+c) Copy remote
+s) Set configuration password
+q) Quit config
+e/n/d/r/c/s/q> q
+```
+
+
+###### **3. Rclone Mount**
+
+여기서 조심해야 할 것은 Rclone Config에서 지정한 Name을 통해서 Mount를 해야 하는데, 이 때 구글드라이브를 구성한 Name(예시에서는 GoogleDrive)을 Mount하는 것이 아니라, Cache를 구성한 Name(예시에서는 cache)를 마운트해야 한다.
+
+이를 Cron 또는 Service로 등록하고, plexmediaserver에서 라이브러리로 구성할 디렉토리에 포함시켜 스캔한다.
+
+예시는 아래와 같다.
+```
+
+```
