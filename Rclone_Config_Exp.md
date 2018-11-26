@@ -7,7 +7,7 @@ rclone v1.44
 - go version: go1.11.1
 ```
 1. **Rclone Config** 
-  - 처음 실행하면 아래와 같이 아무런 구성이 없다.
+처음 실행하면 아래와 같이 아무런 구성이 없다.
 
 ```
 ~$ rclone config
