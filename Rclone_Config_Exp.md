@@ -486,9 +486,29 @@ e/n/d/r/c/s/q> q
 
 여기서 조심해야 할 것은 Rclone Config에서 지정한 Name을 통해서 Mount를 해야 하는데, 이 때 구글드라이브를 구성한 Name(예시에서는 GoogleDrive)을 Mount하는 것이 아니라, Cache를 구성한 Name(예시에서는 cache)를 마운트해야 한다.
 
-이를 Cron 또는 Service로 등록하고, plexmediaserver에서 라이브러리로 구성할 디렉토리에 포함시켜 스캔한다.
+이를 스크립트로 작성하여 Cron 또는 Service로 등록하고, plexmediaserver에서 라이브러리로 구성할 디렉토리에 포함시켜 스캔한다.
 
-예시는 아래와 같다.
+예시는 아래와 같다. (Cron)
+```
+#!/bin/bash
+#
+# Environment 
+# OS : Ubuntu 18.04 LTS
+# Rclone Ver : v1.44
+#
+# Cron Use Exp
+#   */5 * * * * /bin/bash /<path>/MountRclone.sh
+
+MountDir = "/home/<username>/rclone/cache/"
+RcloneConf = "/home/<username>/.config/rclone/rclone.conf"
+
+if [ ! -d "$MountDir/Temp" ]; then
+    rclone mount cache: "$MountDir" \
+    --config "RcloneConf" \
+    --allow-non-empty --allow-other --read-only \
+    --uid <current_uid> --gid <current_gid> &
+else
+    echo "Pre Mounting"
+fi
 ```
 
-```
