@@ -7,7 +7,7 @@ rclone v1.44
 - go version: go1.11.1
 ```
 
-###### 1. **Rclone Config** 
+##### 1. **Rclone Config** 
 
 처음 실행하면 아래와 같이 아무런 구성이 없다.
 ```
@@ -235,7 +235,7 @@ q) Quit config
 e/n/d/r/c/s/q>
 ```
 
-###### **2. Cache 설정**
+##### **2. Cache 설정**
 
 1번과 동일하게 rclone config 화면으로 이동한다.
 
@@ -482,7 +482,7 @@ e/n/d/r/c/s/q> q
 ```
 
 
-###### **3. Rclone Mount**
+##### **3. Rclone Mount**
 
 여기서 조심해야 할 것은 Rclone Config에서 지정한 Name을 통해서 Mount를 해야 하는데, 이 때 구글드라이브를 구성한 Name(예시에서는 GoogleDrive)을 Mount하는 것이 아니라, Cache를 구성한 Name(예시에서는 cache)를 마운트해야 한다.
 
