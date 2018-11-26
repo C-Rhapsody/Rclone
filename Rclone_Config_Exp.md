@@ -6,10 +6,10 @@ rclone v1.44
 - os/arch: linux/amd64
 - go version: go1.11.1
 ```
+
 ###### **Rclone Config** 
 
 처음 실행하면 아래와 같이 아무런 구성이 없다.
-
 ```
 ~$ rclone config
 Current remotes:
@@ -29,7 +29,6 @@ q) Quit config
 'n'을 입력하여 자신이 사용할 Config의 이름을 정의한다.
 
 예시에서는 'GoogleDrive'라 하였다.
-
 ```
 e/n/d/r/c/s/q> n
 name> GoogleDrive
@@ -38,7 +37,6 @@ name> GoogleDrive
 'Config name'이 사용할 서비스를 정한다.
 
 예시는 '12번 Google Drive'
-
 ```
 Type of storage to configure.
 Enter a string value. Press Enter for the default ("").
@@ -100,7 +98,6 @@ Storage> 12
 
 구글드라이브에 접근할 때 사용할 Client_id와 Secret_Key를 입력한다.
   - plexdrive는 여기서 Google Developer 사이트에서 프로젝트 생성해 주고 이 키를 어딘가에 저장해야 하는데, rclone은 그럴 필요가 없이 저절로 갱신해 준다. **그냥 엔터를 눌러 넘어가기를 추천!!!!**
-
 ```
 ** See help for drive backend at: https://rclone.org/drive/ **
 
@@ -114,6 +111,9 @@ Enter a string value. Press Enter for the default ("").
 client_secret>
 ```
 
+구글드라이브에 접근할 권한을 설정한다. 
+
+예시에서는 plexmediaserver로만 사용할거라 '2번 read-only'로 설정
 ```
 Scope that rclone should use when requesting access from drive.
 Enter a string value. Press Enter for the default ("").
@@ -133,12 +133,32 @@ Choose a number from below, or type in your own value
  5 | does not allow any access to read or download file content.
    \ "drive.metadata.readonly"
 scope> 2
+```
+
+구글드라이브 내용중에 필요로 하는 폴더의 Token(?)키 값을 지정해 준다. 
+
+모든 디렉토리를 포함할 거라면 그냥 엔터
+```
 ID of the root folder
 Leave blank normally.
 Fill in to access "Computers" folders. (see docs).
 Enter a string value. Press Enter for the default ("").
 root_folder_id>
+```
 
+이후 설정은 접속권한을 설정하는 것 같으나 잘 모르겠음. 그냥 엔터
+```
+Service Account Credentials JSON file path
+Leave blank normally.
+Needed only if you want use SA instead of interactive login.
+Enter a string value. Press Enter for the default ("").
+service_account_file>
+```
 
-
+고급설정. 그냥 'n' 엔터 -_-;
+```
+Edit advanced config? (y/n)
+y) Yes
+n) No
+y/n> n
 ```
