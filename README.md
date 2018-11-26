@@ -1,6 +1,6 @@
 # Rclone Cache
 
-## Intro : Plexdrive vs Rclone
+#### Intro : Plexdrive vs Rclone
 
 기존에 plexdrive(4, 5 포함)를 사용하다보니 chunk 관련된 오류와 함께 업로드된 파일이 반영이 안되거나 
 
@@ -12,7 +12,7 @@
     - Rclone은 Config 내용 중에 RootDirectory를 선택하던 옵션이 있었던 것으로 기억
     - DB는 어떤 DB를 사용하는지(plexdrive의 경우 4.0은 외부종속으로 MongoDB, 5.0은 golang이 기초인 boltdb) 자세히 모르겠으나 plexdriver 5처럼 내부 DB를 사용하는 것으로 보임
     
-## History : 삽질기
+#### History : 삽질기
 
   - 큰 오해를 했던 부분이 Rclone config 구성시 Cache config를 추가해 주면 구글드라이브를 구성했던 config에 반영되는지 알고 일반 Config의 Name을 Mount해서 계속 테스트하였음
   - 희안하게 Plexmediaserver에서 에이전트를 TVDB 또는 TMDB로 구성하면 Banned 되기까지 상당히 오랜 시간이 걸려서 '아직 Rclone Cache 기능이 완벽하지 않은가 보다' 라고 생각하고 계속 다음버전을 기약하였음
@@ -23,7 +23,7 @@
   - 그리고 얼마의 시간이 지난지 모르겠으나, Ban 없이 잘 사용중 -_- 
     - Rclone은 확인될 때마다 Update하였고(글 작성하는 현재 시점에 1.44? 1.45?) plexmediaserver도 계속 Update하였으나 큰 이슈 없음
 
-## After : Todo
+#### After : Todo
   
   - Rclone Cache : 인연이 된다면 다른 Cloud도 한 번 구성해 볼까 한다.(가능성은 현저히 낮아 보임)
   - Rclone Move / Copy : Google에서 하루 한계치인 750G를 우회하는 방법을 찾는 중
