@@ -27,6 +27,7 @@ q) Quit config
 ```
 
 'n'을 입력하여 자신이 사용할 Config의 이름을 정의한다.
+
 예시에서는 'GoogleDrive'라 하였다.
 
 ```
@@ -34,7 +35,8 @@ e/n/d/r/c/s/q> n
 name> GoogleDrive
 ```
 
-'Config name'이 사용할 서비스를 정한다
+'Config name'이 사용할 서비스를 정한다.
+
 예시는 '12번 Google Drive'
 
 ```
