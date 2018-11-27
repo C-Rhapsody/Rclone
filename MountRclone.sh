@@ -12,7 +12,7 @@ RcloneConf = "/home/<username>/.config/rclone/rclone.conf"
 
 if [ ! -d "$MountDir/Temp" ]; then
     rclone mount cache: "$MountDir" \
-    --config "RcloneConf" \
+    --config "$RcloneConf" \
     --allow-non-empty --allow-other --read-only \
     --uid <current_uid> --gid <current_gid> &
 else
