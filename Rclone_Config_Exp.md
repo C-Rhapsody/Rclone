@@ -499,8 +499,8 @@ e/n/d/r/c/s/q> q
 # Cron Use Exp
 #   */5 * * * * /bin/bash /<path>/MountRclone.sh
 
-MountDir = "/home/<username>/rclone/cache/"
-RcloneConf = "/home/<username>/.config/rclone/rclone.conf"
+MountDir="/home/<username>/rclone/cache/"
+RcloneConf="/home/<username>/.config/rclone/rclone.conf"
 
 if [ ! -d "$MountDir/Temp" ]; then
     rclone mount cache: "$MountDir" \
@@ -510,5 +510,6 @@ if [ ! -d "$MountDir/Temp" ]; then
 else
     echo "Pre Mounting"
 fi
+
 ```
 
